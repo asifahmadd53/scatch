@@ -10,15 +10,23 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
 app.set('view engine', 'ejs')
 app.use(express.static(path.join(__dirname,'public')))
+const ownersRouter = require('./routes/ownerRouter')
+const usersRouter = require('./routes/userRouter')
+const productsRouter = require('./routes/productRouters')
 
 
 app.use(cookieParser())
 
-app.get('/',(req, res)=>{
-    res.send('fksjdklsdjfl')
-})
+app.use('/owners', ownersRouter)
+app.use('/users', usersRouter)
+app.use('/products', productsRouter)
 
-const port = process.env.PORT || 3000
+// app.use('/',(req, res)=>{
+//     res.send("gjfjg")
+// })
+
+const port = process.env.PORT || 4000
+
 
 app.listen(port, ()=>{
     console.log(`server is running on port http://localhost:${port}`)
