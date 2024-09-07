@@ -19,9 +19,12 @@ if(process.env.NODE_ENV === 'development'){
     })
 }
 
-router.get('/',(req, res)=>{
-    res.send('Hey its working great' )
+router.get('/admin',(req, res)=>{
+    let successs = req.flash('success')
+    res.render('createproducts')
 })
+
+
 
 
 module.exports = router
